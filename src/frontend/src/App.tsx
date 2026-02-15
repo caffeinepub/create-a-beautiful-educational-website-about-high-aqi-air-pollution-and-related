@@ -10,6 +10,8 @@ import { PreventionTipsSection } from './components/sections/PreventionTipsSecti
 import { VulnerableGroupsSection } from './components/sections/VulnerableGroupsSection';
 import { ProjectsSection } from './components/sections/ProjectsSection';
 import { RequestChangeSection } from './components/sections/RequestChangeSection';
+import { LongTermHealthSection } from './components/sections/LongTermHealthSection';
+import { IndoorAirActionPlanSection } from './components/sections/IndoorAirActionPlanSection';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <VulnerableGroupsSection />
         <ProjectsSection />
         <RequestChangeSection />
+        <LongTermHealthSection />
+        <IndoorAirActionPlanSection />
       </main>
       <SiteFooter />
     </div>

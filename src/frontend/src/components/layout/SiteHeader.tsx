@@ -12,6 +12,8 @@ const navItems = [
   { label: 'At-Risk Groups', href: '#vulnerable' },
   { label: 'Projects', href: '#projects' },
   { label: 'Request a Change', href: '#request-change' },
+  { label: 'Long-Term Health', href: '#long-term-health' },
+  { label: 'Indoor Air Plan', href: '#indoor-air-action-plan' },
 ];
 
 export function SiteHeader() {

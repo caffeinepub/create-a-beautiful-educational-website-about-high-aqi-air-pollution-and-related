@@ -1,10 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Remove the Caffeine AI attribution/watermark from the website footer while keeping the rest of the footer unchanged.
+**Goal:** Extend the site with additional AQI/air-health educational sections and update navigation/footer so users can reach them, plus add a contact line at the very bottom of the footer.
 
 **Planned changes:**
-- Delete the footer line that says “Built with … using caffeine.ai” (including the caffeine.ai outbound link and any UTM parameters), while preserving remaining footer content and layout.
-- Clean up now-unused frontend code related to that attribution (e.g., Heart icon import and any variables used only for the caffeine.ai link) to avoid unused import/variable build issues.
+- Add a new final footer-bottom line after the existing copyright that reads exactly: "For more information contact 9315576318".
+- Create at least two new full-width content section components under `frontend/src/components/sections/` with substantial English content relevant to AirHealth/AQI, and render them in `frontend/src/App.tsx` after the current last section (`RequestChangeSection`).
+- Update header navigation (desktop and mobile) and footer “Quick Links” to include smooth-scroll links to each new section id.
+- Extend the “Request a Change” form’s “Related Section” dropdown to include the newly added section names.
 
-**User-visible outcome:** The footer no longer shows any “Built with/using/caffeine.ai” attribution (or related heart icon) and contains no outbound link to caffeine.ai, while the footer layout remains visually consistent.
+**User-visible outcome:** The page is longer with new informative sections users can navigate to from the header/footer, the change-request form can reference the new sections, and the footer ends with the provided contact sentence.

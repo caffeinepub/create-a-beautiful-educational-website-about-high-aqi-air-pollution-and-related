@@ -18,6 +18,9 @@ const sections = [
   'Symptoms',
   'Prevention',
   'At-Risk Groups',
+  'Projects',
+  'Long-Term Health',
+  'Indoor Air Action Plan',
 ];
 
 export function RequestChangeSection() {

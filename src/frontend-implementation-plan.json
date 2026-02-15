@@ -1,36 +1,84 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Remove Caffeine AI footer attribution",
+  "title": "Footer contact line + additional AQI educational sections and navigation wiring",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Remove the Caffeine AI attribution/watermark line from the footer while preserving the rest of the footer content and layout.",
+      "id": "REQ-3",
+      "summary": "Add an exact contact sentence as the last line in the footer bottom area.",
       "acceptanceCriteria": [
-        "The footer no longer displays any text like \"Built with\" / \"using\" / \"caffeine.ai\" or any heart icon used specifically for that attribution.",
-        "No outbound link to https://caffeine.ai/ (including any UTM parameters) is present in the rendered footer HTML.",
-        "Footer layout remains visually consistent and does not show empty gaps where the attribution used to be."
+        "The footer displays the new sentence exactly as provided, including the phone number.",
+        "The new line appears after the existing copyright line (i.e., it is the last line on the page).",
+        "No existing footer content (branding, quick links, notices) is removed."
       ],
       "file_operations": [
         {
           "path": "frontend/src/components/layout/SiteFooter.tsx",
           "operation": "modify",
-          "description": "Remove the rendered attribution row content in the footer (the \"Built with … using caffeine.ai\" text, Heart icon, and caffeine.ai link with UTM params), keeping the rest of the footer sections intact and ensuring the bottom row still renders cleanly without spacing gaps."
+          "description": "Add a new final footer-bottom line that reads exactly: \"For more information contact 9315576318\" and ensure it renders after the existing copyright line without removing any existing footer content."
         }
       ]
     },
     {
-      "id": "REQ-2",
-      "summary": "Clean up now-unused imports/variables that existed only for the removed footer attribution so the frontend builds cleanly.",
+      "id": "REQ-4",
+      "summary": "Create at least two new full-width educational sections and render them after RequestChangeSection in App.tsx.",
       "acceptanceCriteria": [
-        "Frontend build passes with no unused import/unused variable errors or warnings introduced by removing the attribution.",
-        "No other UI sections are modified as part of this change."
+        "At least two new full-width sections are added as separate components under frontend/src/components/sections/ and rendered in App.tsx after the current last section (RequestChangeSection).",
+        "Each new section has a unique section id (for hash navigation) and uses consistent spacing/layout patterns (e.g., py-16/md:py-24 and scroll-mt-16) matching existing sections.",
+        "The new sections contain substantial English content relevant to the AirHealth/AQI educational topic (not placeholder text)."
       ],
       "file_operations": [
         {
+          "path": "frontend/src/components/sections/LongTermHealthSection.tsx",
+          "operation": "create",
+          "description": "Create a new full-width React section component with a unique id (e.g., \"long-term-health\") using the same spacing/layout conventions as existing sections (py-16 md:py-24, scroll-mt-16). Include substantial English content about long-term health impacts of air pollution and practical takeaways. Use shadcn-ui building blocks already present in the app (e.g., Card) to match the visual system; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/sections/IndoorAirActionPlanSection.tsx",
+          "operation": "create",
+          "description": "Create a new full-width React section component with a unique id (e.g., \"indoor-air-action-plan\") using consistent spacing/layout conventions (py-16 md:py-24, scroll-mt-16). Include substantial English content focused on an indoor air quality action plan (ventilation, filtration, cooking, smoke events, monitoring). Use existing shadcn-ui components (e.g., Card, Alert) as appropriate; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Import the two new section components and render them in the page flow after the current last section (RequestChangeSection), preserving the existing order of current sections."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add header and footer navigation links for the newly added sections with existing smooth-scroll behavior.",
+      "acceptanceCriteria": [
+        "SiteHeader navigation includes new buttons that scroll smoothly to each new section.",
+        "SiteFooter “Quick Links” includes new links that scroll smoothly to each new section.",
+        "All new links work from both desktop and mobile navigation without page reloads."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Extend the navItems list to include the two new sections (labels + hash hrefs matching the new section ids) so both desktop and mobile navigation smooth-scroll to them using the existing handleNavClick behavior."
+        },
+        {
           "path": "frontend/src/components/layout/SiteFooter.tsx",
           "operation": "modify",
-          "description": "Remove now-unused code introduced solely for the caffeine.ai attribution, including the Heart icon import and any variables/computed values used only to form the caffeine.ai URL (e.g., appIdentifier), ensuring no unused-import/unused-variable warnings remain."
+          "description": "Add new entries to the “Quick Links” list for the new sections, using the existing handleQuickLinkClick smooth-scroll behavior and matching the new section ids."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Add the newly created section names to the “Related Section” dropdown in the Request a Change form.",
+      "acceptanceCriteria": [
+        "The “Related Section” Select includes entries for each newly added section.",
+        "Submitting a change request still includes the selected section in the request body as it does today.",
+        "No regression to authentication/login flow for submitting change requests."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/sections/RequestChangeSection.tsx",
+          "operation": "modify",
+          "description": "Update the local sections array used by the “Related Section” Select to include the new section names (matching the new sections added to the page). Keep the existing submission behavior that prepends the selected section into the request content and do not change the authentication/login gating flow. Uses existing shadcn-ui Select components already in this file; verify the component's usage instructions before implementing."
         }
       ]
     }

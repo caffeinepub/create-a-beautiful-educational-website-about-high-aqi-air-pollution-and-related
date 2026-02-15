@@ -2,8 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-remove-the-caffeine-ai-attribution-watermark-from-the-website-footer-by-deleting-the-built-with-using-caffeine-ai-line-including-the-caffeine-ai-outbound-link-and-utm-parameters-while-keeping-the-rest-of-the-footer-content-intact",
-      "featureTitle": "Remove the Caffeine AI attribution/watermark from the website footer by deleting the \"Built with … using caffeine.ai\" line (including the caffeine.ai outbound link and UTM parameters), while keeping the rest of the footer content intact.",
+      "featureId": "feature-add-a-final-line-at-the-very-end-of-the-site-in-the-footer-bottom-area-that-reads-exactly-for-more-information-contact-9315576318",
+      "featureTitle": "Add a final line at the very end of the site (in the footer bottom area) that reads exactly: \"For more information contact 9315576318\".",
       "files": [
         "frontend/src/components/layout/SiteFooter.tsx"
       ],
@@ -16,15 +16,17 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-3"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-remove-now-unused-code-related-to-the-footer-attribution-e-g-the-heart-icon-import-and-any-variables-computed-only-for-the-caffeine-ai-link-so-the-frontend-builds-without-unused-import-unused-variable-issues",
-      "featureTitle": "Remove now-unused code related to the footer attribution (e.g., the Heart icon import and any variables computed only for the caffeine.ai link) so the frontend builds without unused-import/unused-variable issues.",
+      "featureId": "feature-make-the-website-more-long-by-adding-additional-meaningful-content-sections-below-the-existing-sections-implemented-as-new-react-section-components-and-included-in-the-page-flow-in-frontend-src-app-tsx",
+      "featureTitle": "Make the website \"more long\" by adding additional, meaningful content sections below the existing sections, implemented as new React section components and included in the page flow in frontend/src/App.tsx.",
       "files": [
-        "frontend/src/components/layout/SiteFooter.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/components/sections/IndoorAirActionPlanSection.tsx",
+        "frontend/src/components/sections/LongTermHealthSection.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -35,7 +37,46 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-site-navigation-to-include-the-newly-added-sections-add-corresponding-items-to-the-header-navigation-desktop-mobile-and-the-footer-quick-links-list-using-the-same-smooth-scroll-behavior-as-existing-links",
+      "featureTitle": "Update site navigation to include the newly added sections: add corresponding items to the header navigation (desktop + mobile) and the footer “Quick Links” list, using the same smooth-scroll behavior as existing links.",
+      "files": [
+        "frontend/src/components/layout/SiteFooter.tsx",
+        "frontend/src/components/layout/SiteHeader.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-extend-the-request-a-change-form-s-related-section-dropdown-to-include-the-newly-added-section-names-so-users-can-reference-them-when-submitting-change-requests",
+      "featureTitle": "Extend the “Request a Change” form’s “Related Section” dropdown to include the newly added section names so users can reference them when submitting change requests.",
+      "files": [
+        "frontend/src/components/sections/RequestChangeSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
       ],
       "confidence": "high"
     }

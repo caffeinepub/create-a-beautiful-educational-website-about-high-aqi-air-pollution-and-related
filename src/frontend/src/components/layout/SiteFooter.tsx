@@ -75,6 +75,24 @@ export function SiteFooter() {
               </li>
               <li>
                 <a 
+                  href="#long-term-health" 
+                  onClick={(e) => handleQuickLinkClick(e, '#long-term-health')}
+                  className="hover:text-primary transition-colors"
+                >
+                  Long-Term Health
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#indoor-air-action-plan" 
+                  onClick={(e) => handleQuickLinkClick(e, '#indoor-air-action-plan')}
+                  className="hover:text-primary transition-colors"
+                >
+                  Indoor Air Plan
+                </a>
+              </li>
+              <li>
+                <a 
                   href="#request-change" 
                   onClick={(e) => handleQuickLinkClick(e, '#request-change')}
                   className="hover:text-primary transition-colors"
@@ -93,8 +111,9 @@ export function SiteFooter() {
           </div>
         </div>
         
-        <div className="pt-8 border-t text-center text-sm text-muted-foreground">
+        <div className="pt-8 border-t text-center text-sm text-muted-foreground space-y-2">
           <p>© {currentYear} AirHealth.</p>
+          <p>For more information contact 9315576318</p>
         </div>
       </div>
     </footer>

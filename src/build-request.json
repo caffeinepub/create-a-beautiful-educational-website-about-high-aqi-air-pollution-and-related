@@ -1,51 +1,90 @@
 {
   "kind": "build_request",
-  "title": "Remove Caffeine AI watermark/attribution from the UI",
+  "title": "Add contact line in footer and extend page with additional content sections",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Remove the Caffeine AI attribution/watermark from the website footer by deleting the \"Built with … using caffeine.ai\" line (including the caffeine.ai outbound link and UTM parameters), while keeping the rest of the footer content intact.",
+      "id": "REQ-3",
+      "text": "Add a final line at the very end of the site (in the footer bottom area) that reads exactly: \"For more information contact 9315576318\".",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-6"
         ],
         "quotes": [
-          "Can u remove watermark build with using caffeine ai"
+          "In last write for more information contact 9315576318"
         ]
       },
       "acceptanceCriteria": [
-        "The footer no longer displays any text like \"Built with\" / \"using\" / \"caffeine.ai\" or any heart icon used specifically for that attribution.",
-        "No outbound link to https://caffeine.ai/ (including any UTM parameters) is present in the rendered footer HTML.",
-        "Footer layout remains visually consistent and does not show empty gaps where the attribution used to be."
+        "The footer displays the new sentence exactly as provided, including the phone number.",
+        "The new line appears after the existing copyright line (i.e., it is the last line on the page).",
+        "No existing footer content (branding, quick links, notices) is removed."
       ]
     },
     {
-      "id": "REQ-2",
-      "text": "Remove now-unused code related to the footer attribution (e.g., the Heart icon import and any variables computed only for the caffeine.ai link) so the frontend builds without unused-import/unused-variable issues.",
+      "id": "REQ-4",
+      "text": "Make the website \"more long\" by adding additional, meaningful content sections below the existing sections, implemented as new React section components and included in the page flow in frontend/src/App.tsx.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-6"
         ],
         "quotes": [
-          "Can u remove watermark build with using caffeine ai"
+          "and make more long website"
         ]
       },
       "acceptanceCriteria": [
-        "Frontend build passes with no unused import/unused variable errors or warnings introduced by removing the attribution.",
-        "No other UI sections are modified as part of this change."
+        "At least two new full-width sections are added as separate components under frontend/src/components/sections/ and rendered in App.tsx after the current last section (RequestChangeSection).",
+        "Each new section has a unique section id (for hash navigation) and uses consistent spacing/layout patterns (e.g., py-16/md:py-24 and scroll-mt-16) matching existing sections.",
+        "The new sections contain substantial English content relevant to the AirHealth/AQI educational topic (not placeholder text)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Update site navigation to include the newly added sections: add corresponding items to the header navigation (desktop + mobile) and the footer “Quick Links” list, using the same smooth-scroll behavior as existing links.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "make more long website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "SiteHeader navigation includes new buttons that scroll smoothly to each new section.",
+        "SiteFooter “Quick Links” includes new links that scroll smoothly to each new section.",
+        "All new links work from both desktop and mobile navigation without page reloads."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Extend the “Request a Change” form’s “Related Section” dropdown to include the newly added section names so users can reference them when submitting change requests.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "make more long website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The “Related Section” Select includes entries for each newly added section.",
+        "Submitting a change request still includes the selected section in the request body as it does today.",
+        "No regression to authentication/login flow for submitting change requests."
       ]
     }
   ],
   "constraints": [
-    "Do not edit any files under frontend/src/components/ui or any paths listed as immutable in SYSTEM_CONTEXT.",
+    "Do not publish/deploy changes without explicit user confirmation (user said: \"Sorry don't publish\").",
+    "Do not modify files under frontend/src/components/ui (compose existing UI components instead).",
     "Keep all user-facing text in English."
   ],
   "nonGoals": [
-    "Removing the separate on-screen credit label \"Made by Saharsh UNIYAL\" (this is not the Caffeine watermark).",
-    "Changing backend logic, authentication, or canister state."
+    "No backend (Motoko) changes are required for this request.",
+    "No changes to Internet Identity authentication behavior.",
+    "No new third-party integrations (analytics, maps, social APIs, etc.)."
   ],
   "imageRequirements": {
     "required": [],

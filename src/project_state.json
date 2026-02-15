@@ -1,26 +1,42 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "App build/deployment in progress; user requests removal of the \"Built with Caffeine AI\" watermark.",
-  "architectural_notes": [],
-  "known_issues": [
-    "App/build output currently shows a \"Built with Caffeine AI\" watermark that user wants removed."
+  "summary": "Website content updates requested: add a 'For more information contact 9315576318' line at the end, and expand the website to be longer (more content/sections). Also user requested not to publish/deploy changes without confirmation.",
+  "architectural_notes": [
+    "Do not publish/deploy updates without explicit user confirmation (draft/preview changes first)."
   ],
-  "isFixRequest": true,
+  "known_issues": [],
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-remove-the-caffeine-ai-attribution-watermark-from-the-website-footer-by-deleting-the-built-with-using-caffeine-ai-line-including-the-caffeine-ai-outbound-link-and-utm-parameters-while-keeping-the-rest-of-the-footer-content-intact",
-      "title": "Remove the Caffeine AI attribution/watermark from the website footer by deleting the \"Built with … using caffeine.ai\" line (including the caffeine.ai outbound link and UTM parameters), while keeping the rest of the footer content intact.",
+      "id": "feature-add-a-final-line-at-the-very-end-of-the-site-in-the-footer-bottom-area-that-reads-exactly-for-more-information-contact-9315576318",
+      "title": "Add a final line at the very end of the site (in the footer bottom area) that reads exactly: \"For more information contact 9315576318\".",
       "reqIds": [
-        "REQ-1"
+        "REQ-3"
       ],
       "version": 1
     },
     {
-      "id": "feature-remove-now-unused-code-related-to-the-footer-attribution-e-g-the-heart-icon-import-and-any-variables-computed-only-for-the-caffeine-ai-link-so-the-frontend-builds-without-unused-import-unused-variable-issues",
-      "title": "Remove now-unused code related to the footer attribution (e.g., the Heart icon import and any variables computed only for the caffeine.ai link) so the frontend builds without unused-import/unused-variable issues.",
+      "id": "feature-make-the-website-more-long-by-adding-additional-meaningful-content-sections-below-the-existing-sections-implemented-as-new-react-section-components-and-included-in-the-page-flow-in-frontend-src-app-tsx",
+      "title": "Make the website \"more long\" by adding additional, meaningful content sections below the existing sections, implemented as new React section components and included in the page flow in frontend/src/App.tsx.",
       "reqIds": [
-        "REQ-2"
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-site-navigation-to-include-the-newly-added-sections-add-corresponding-items-to-the-header-navigation-desktop-mobile-and-the-footer-quick-links-list-using-the-same-smooth-scroll-behavior-as-existing-links",
+      "title": "Update site navigation to include the newly added sections: add corresponding items to the header navigation (desktop + mobile) and the footer “Quick Links” list, using the same smooth-scroll behavior as existing links.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-extend-the-request-a-change-form-s-related-section-dropdown-to-include-the-newly-added-section-names-so-users-can-reference-them-when-submitting-change-requests",
+      "title": "Extend the “Request a Change” form’s “Related Section” dropdown to include the newly added section names so users can reference them when submitting change requests.",
+      "reqIds": [
+        "REQ-6"
       ],
       "version": 1
     }
@@ -28,12 +44,18 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Remove the \"Built with Caffeine AI\" watermark from the app/build output.",
+      "summary": "Add closing line: 'For more information contact 9315576318'",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Make the website longer by adding more content/sections",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "projectName": "Remove Caffeine AI watermark/attribution from the UI",
+  "projectName": "Add contact line in footer and extend page with additional content sections",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }
