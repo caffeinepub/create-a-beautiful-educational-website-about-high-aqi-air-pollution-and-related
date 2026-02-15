@@ -1,0 +1,43 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-remove-the-caffeine-ai-attribution-watermark-from-the-website-footer-by-deleting-the-built-with-using-caffeine-ai-line-including-the-caffeine-ai-outbound-link-and-utm-parameters-while-keeping-the-rest-of-the-footer-content-intact",
+      "featureTitle": "Remove the Caffeine AI attribution/watermark from the website footer by deleting the \"Built with … using caffeine.ai\" line (including the caffeine.ai outbound link and UTM parameters), while keeping the rest of the footer content intact.",
+      "files": [
+        "frontend/src/components/layout/SiteFooter.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-now-unused-code-related-to-the-footer-attribution-e-g-the-heart-icon-import-and-any-variables-computed-only-for-the-caffeine-ai-link-so-the-frontend-builds-without-unused-import-unused-variable-issues",
+      "featureTitle": "Remove now-unused code related to the footer attribution (e.g., the Heart icon import and any variables computed only for the caffeine.ai link) so the frontend builds without unused-import/unused-variable issues.",
+      "files": [
+        "frontend/src/components/layout/SiteFooter.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

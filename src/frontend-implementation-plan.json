@@ -1,0 +1,38 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Remove Caffeine AI footer attribution",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Remove the Caffeine AI attribution/watermark line from the footer while preserving the rest of the footer content and layout.",
+      "acceptanceCriteria": [
+        "The footer no longer displays any text like \"Built with\" / \"using\" / \"caffeine.ai\" or any heart icon used specifically for that attribution.",
+        "No outbound link to https://caffeine.ai/ (including any UTM parameters) is present in the rendered footer HTML.",
+        "Footer layout remains visually consistent and does not show empty gaps where the attribution used to be."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "Remove the rendered attribution row content in the footer (the \"Built with … using caffeine.ai\" text, Heart icon, and caffeine.ai link with UTM params), keeping the rest of the footer sections intact and ensuring the bottom row still renders cleanly without spacing gaps."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Clean up now-unused imports/variables that existed only for the removed footer attribution so the frontend builds cleanly.",
+      "acceptanceCriteria": [
+        "Frontend build passes with no unused import/unused variable errors or warnings introduced by removing the attribution.",
+        "No other UI sections are modified as part of this change."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "Remove now-unused code introduced solely for the caffeine.ai attribution, including the Heart icon import and any variables/computed values used only to form the caffeine.ai URL (e.g., appIdentifier), ensuring no unused-import/unused-variable warnings remain."
+        }
+      ]
+    }
+  ]
+}

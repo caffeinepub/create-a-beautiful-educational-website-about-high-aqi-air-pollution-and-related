@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "App build/deployment in progress; user requests removal of the \"Built with Caffeine AI\" watermark.",
+  "architectural_notes": [],
+  "known_issues": [
+    "App/build output currently shows a \"Built with Caffeine AI\" watermark that user wants removed."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-remove-the-caffeine-ai-attribution-watermark-from-the-website-footer-by-deleting-the-built-with-using-caffeine-ai-line-including-the-caffeine-ai-outbound-link-and-utm-parameters-while-keeping-the-rest-of-the-footer-content-intact",
+      "title": "Remove the Caffeine AI attribution/watermark from the website footer by deleting the \"Built with … using caffeine.ai\" line (including the caffeine.ai outbound link and UTM parameters), while keeping the rest of the footer content intact.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-now-unused-code-related-to-the-footer-attribution-e-g-the-heart-icon-import-and-any-variables-computed-only-for-the-caffeine-ai-link-so-the-frontend-builds-without-unused-import-unused-variable-issues",
+      "title": "Remove now-unused code related to the footer attribution (e.g., the Heart icon import and any variables computed only for the caffeine.ai link) so the frontend builds without unused-import/unused-variable issues.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Remove the \"Built with Caffeine AI\" watermark from the app/build output.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Remove Caffeine AI watermark/attribution from the UI",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

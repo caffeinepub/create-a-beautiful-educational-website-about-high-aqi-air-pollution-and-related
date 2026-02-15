@@ -1,0 +1,76 @@
+import { useState } from 'react';
+import { Menu, X, Wind } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+
+const navItems = [
+  { label: 'What is AQI', href: '#what-is-aqi' },
+  { label: 'AQI Categories', href: '#aqi-categories' },
+  { label: 'Health Impacts', href: '#diseases' },
+  { label: 'Symptoms', href: '#symptoms' },
+  { label: 'Prevention', href: '#prevention' },
+  { label: 'At-Risk Groups', href: '#vulnerable' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Request a Change', href: '#request-change' },
+];
+
+export function SiteHeader() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleNavClick = (href: string) => {
+    setIsOpen(false);
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Wind className="h-6 w-6 text-primary" />
+          <span className="font-display text-xl font-bold">AirHealth</span>
+        </div>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-1">
+          {navItems.map((item) => (
+            <Button
+              key={item.href}
+              variant="ghost"
+              onClick={() => handleNavClick(item.href)}
+              className="text-sm font-medium"
+            >
+              {item.label}
+            </Button>
+          ))}
+        </nav>
+
+        {/* Mobile Navigation */}
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild className="md:hidden">
+            <Button variant="ghost" size="icon">
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              <span className="sr-only">Toggle menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <nav className="flex flex-col gap-4 mt-8">
+              {navItems.map((item) => (
+                <Button
+                  key={item.href}
+                  variant="ghost"
+                  onClick={() => handleNavClick(item.href)}
+                  className="justify-start text-base"
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </div>
+    </header>
+  );
+}

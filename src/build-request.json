@@ -1,0 +1,64 @@
+{
+  "kind": "build_request",
+  "title": "Remove Caffeine AI watermark/attribution from the UI",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Remove the Caffeine AI attribution/watermark from the website footer by deleting the \"Built with … using caffeine.ai\" line (including the caffeine.ai outbound link and UTM parameters), while keeping the rest of the footer content intact.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "Can u remove watermark build with using caffeine ai"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The footer no longer displays any text like \"Built with\" / \"using\" / \"caffeine.ai\" or any heart icon used specifically for that attribution.",
+        "No outbound link to https://caffeine.ai/ (including any UTM parameters) is present in the rendered footer HTML.",
+        "Footer layout remains visually consistent and does not show empty gaps where the attribution used to be."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Remove now-unused code related to the footer attribution (e.g., the Heart icon import and any variables computed only for the caffeine.ai link) so the frontend builds without unused-import/unused-variable issues.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "Can u remove watermark build with using caffeine ai"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Frontend build passes with no unused import/unused variable errors or warnings introduced by removing the attribution.",
+        "No other UI sections are modified as part of this change."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit any files under frontend/src/components/ui or any paths listed as immutable in SYSTEM_CONTEXT.",
+    "Keep all user-facing text in English."
+  ],
+  "nonGoals": [
+    "Removing the separate on-screen credit label \"Made by Saharsh UNIYAL\" (this is not the Caffeine watermark).",
+    "Changing backend logic, authentication, or canister state."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

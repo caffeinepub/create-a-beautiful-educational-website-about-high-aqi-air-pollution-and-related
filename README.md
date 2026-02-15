@@ -1,2 +1,3 @@
-# create-a-beautiful-educational-website-about-high-aqi-air-pollution-and-related
-Exported from Caffeine project: Remove Caffeine AI watermark/attribution from the UI
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`
