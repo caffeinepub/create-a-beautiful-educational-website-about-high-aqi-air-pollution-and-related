@@ -2,15 +2,18 @@ import { useState } from 'react';
 import { Menu, X, Wind } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { ThemeToggle } from './ThemeToggle';
 
 const navItems = [
   { label: 'What is AQI', href: '#what-is-aqi' },
   { label: 'AQI Categories', href: '#aqi-categories' },
+  { label: 'AQI & Forecast', href: '#aqi-forecast' },
   { label: 'Health Impacts', href: '#diseases' },
   { label: 'Symptoms', href: '#symptoms' },
   { label: 'Prevention', href: '#prevention' },
   { label: 'At-Risk Groups', href: '#vulnerable' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Reviews', href: '#reviews' },
   { label: 'Request a Change', href: '#request-change' },
   { label: 'Long-Term Health', href: '#long-term-health' },
   { label: 'Indoor Air Plan', href: '#indoor-air-action-plan' },
@@ -47,31 +50,35 @@ export function SiteHeader() {
               {item.label}
             </Button>
           ))}
+          <ThemeToggle />
         </nav>
 
         {/* Mobile Navigation */}
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              <span className="sr-only">Toggle menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-            <nav className="flex flex-col gap-4 mt-8">
-              {navItems.map((item) => (
-                <Button
-                  key={item.href}
-                  variant="ghost"
-                  onClick={() => handleNavClick(item.href)}
-                  className="justify-start text-base"
-                >
-                  {item.label}
-                </Button>
-              ))}
-            </nav>
-          </SheetContent>
-        </Sheet>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <nav className="flex flex-col gap-4 mt-8">
+                {navItems.map((item) => (
+                  <Button
+                    key={item.href}
+                    variant="ghost"
+                    onClick={() => handleNavClick(item.href)}
+                    className="justify-start text-base"
+                  >
+                    {item.label}
+                  </Button>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );

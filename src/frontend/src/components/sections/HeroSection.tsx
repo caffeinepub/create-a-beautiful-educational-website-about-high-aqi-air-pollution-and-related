@@ -10,7 +10,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background">
+    <section className="relative overflow-hidden bg-gradient-to-b from-primary/10 via-primary/5 to-background">
       <div className="container py-16 md:py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
@@ -34,7 +34,7 @@ export function HeroSection() {
             </div>
           </div>
           
-          <div className="relative aspect-video lg:aspect-auto lg:h-[500px] rounded-2xl overflow-hidden shadow-soft">
+          <div className="relative aspect-video lg:aspect-auto lg:h-[500px] rounded-2xl overflow-hidden shadow-soft border border-border">
             <img 
               src="/assets/generated/hero-air-quality.dim_1600x900.png" 
               alt="City skyline with visible air pollution and haze"

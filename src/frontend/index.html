@@ -4,6 +4,17 @@
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <meta name='description' content='Learn about air quality index (AQI), health impacts of air pollution, and how to protect yourself and your loved ones from poor air quality.' />
         <title>AirHealth - Understanding Air Quality & Your Health</title>
+        <script>
+            // Theme bootstrap - runs before React to prevent flash
+            (function() {
+                const theme = localStorage.getItem('theme');
+                if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            })();
+        </script>
     </head>
     <body>
         <div id='root'></div>

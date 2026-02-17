@@ -2,10 +2,36 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-a-final-line-at-the-very-end-of-the-site-in-the-footer-bottom-area-that-reads-exactly-for-more-information-contact-9315576318",
-      "featureTitle": "Add a final line at the very end of the site (in the footer bottom area) that reads exactly: \"For more information contact 9315576318\".",
+      "featureId": "feature-persist-the-user-s-selected-theme-across-reloads-using-localstorage-and-apply-the-theme-as-early-as-possible-to-avoid-a-flash-of-incorrect-theme-on-first-paint",
+      "featureTitle": "Persist the user’s selected theme across reloads using localStorage, and apply the theme as early as possible to avoid a flash of incorrect theme on first paint.",
       "files": [
-        "frontend/src/components/layout/SiteFooter.tsx"
+        "frontend/src/hooks/useTheme.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-audit-and-update-section-component-styling-so-that-all-major-surfaces-and-text-remain-readable-and-visually-consistent-in-both-light-and-dark-modes-relying-on-theme-tokens-e-g-bg-background-text-foreground-muted-card-rather-than-hard-coded-colors",
+      "featureTitle": "Audit and update section/component styling so that all major surfaces and text remain readable and visually consistent in both light and dark modes, relying on theme tokens (e.g., bg-background, text-foreground, muted, card) rather than hard-coded colors.",
+      "files": [
+        "frontend/src/components/aqi/AQIGuide.tsx",
+        "frontend/src/components/layout/SiteFooter.tsx",
+        "frontend/src/components/layout/TopRightCreditLabel.tsx",
+        "frontend/src/components/sections/HeroSection.tsx",
+        "frontend/src/components/sections/ProjectsSection.tsx",
+        "frontend/src/components/sections/SymptomsHelpSection.tsx",
+        "frontend/src/components/sections/VideosSection.tsx",
+        "frontend/src/index.css"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -17,66 +43,6 @@
       ],
       "testIds": [
         "REQ-3"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-make-the-website-more-long-by-adding-additional-meaningful-content-sections-below-the-existing-sections-implemented-as-new-react-section-components-and-included-in-the-page-flow-in-frontend-src-app-tsx",
-      "featureTitle": "Make the website \"more long\" by adding additional, meaningful content sections below the existing sections, implemented as new React section components and included in the page flow in frontend/src/App.tsx.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/sections/IndoorAirActionPlanSection.tsx",
-        "frontend/src/components/sections/LongTermHealthSection.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-site-navigation-to-include-the-newly-added-sections-add-corresponding-items-to-the-header-navigation-desktop-mobile-and-the-footer-quick-links-list-using-the-same-smooth-scroll-behavior-as-existing-links",
-      "featureTitle": "Update site navigation to include the newly added sections: add corresponding items to the header navigation (desktop + mobile) and the footer “Quick Links” list, using the same smooth-scroll behavior as existing links.",
-      "files": [
-        "frontend/src/components/layout/SiteFooter.tsx",
-        "frontend/src/components/layout/SiteHeader.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-5"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-extend-the-request-a-change-form-s-related-section-dropdown-to-include-the-newly-added-section-names-so-users-can-reference-them-when-submitting-change-requests",
-      "featureTitle": "Extend the “Request a Change” form’s “Related Section” dropdown to include the newly added section names so users can reference them when submitting change requests.",
-      "files": [
-        "frontend/src/components/sections/RequestChangeSection.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-6"
       ],
       "confidence": "high"
     }

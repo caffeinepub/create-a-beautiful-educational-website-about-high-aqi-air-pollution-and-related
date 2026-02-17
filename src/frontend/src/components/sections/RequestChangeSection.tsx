@@ -14,6 +14,7 @@ const sections = [
   'Hero',
   'What is AQI',
   'AQI Categories',
+  'AQI & Forecast',
   'Health Impacts',
   'Symptoms',
   'Prevention',

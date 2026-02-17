@@ -1,42 +1,24 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Website content updates requested: add a 'For more information contact 9315576318' line at the end, and expand the website to be longer (more content/sections). Also user requested not to publish/deploy changes without confirmation.",
-  "architectural_notes": [
-    "Do not publish/deploy updates without explicit user confirmation (draft/preview changes first)."
-  ],
+  "summary": "New project",
+  "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-add-a-final-line-at-the-very-end-of-the-site-in-the-footer-bottom-area-that-reads-exactly-for-more-information-contact-9315576318",
-      "title": "Add a final line at the very end of the site (in the footer bottom area) that reads exactly: \"For more information contact 9315576318\".",
+      "id": "feature-persist-the-user-s-selected-theme-across-reloads-using-localstorage-and-apply-the-theme-as-early-as-possible-to-avoid-a-flash-of-incorrect-theme-on-first-paint",
+      "title": "Persist the user’s selected theme across reloads using localStorage, and apply the theme as early as possible to avoid a flash of incorrect theme on first paint.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-audit-and-update-section-component-styling-so-that-all-major-surfaces-and-text-remain-readable-and-visually-consistent-in-both-light-and-dark-modes-relying-on-theme-tokens-e-g-bg-background-text-foreground-muted-card-rather-than-hard-coded-colors",
+      "title": "Audit and update section/component styling so that all major surfaces and text remain readable and visually consistent in both light and dark modes, relying on theme tokens (e.g., bg-background, text-foreground, muted, card) rather than hard-coded colors.",
       "reqIds": [
         "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-make-the-website-more-long-by-adding-additional-meaningful-content-sections-below-the-existing-sections-implemented-as-new-react-section-components-and-included-in-the-page-flow-in-frontend-src-app-tsx",
-      "title": "Make the website \"more long\" by adding additional, meaningful content sections below the existing sections, implemented as new React section components and included in the page flow in frontend/src/App.tsx.",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-site-navigation-to-include-the-newly-added-sections-add-corresponding-items-to-the-header-navigation-desktop-mobile-and-the-footer-quick-links-list-using-the-same-smooth-scroll-behavior-as-existing-links",
-      "title": "Update site navigation to include the newly added sections: add corresponding items to the header navigation (desktop + mobile) and the footer “Quick Links” list, using the same smooth-scroll behavior as existing links.",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-extend-the-request-a-change-form-s-related-section-dropdown-to-include-the-newly-added-section-names-so-users-can-reference-them-when-submitting-change-requests",
-      "title": "Extend the “Request a Change” form’s “Related Section” dropdown to include the newly added section names so users can reference them when submitting change requests.",
-      "reqIds": [
-        "REQ-6"
       ],
       "version": 1
     }
@@ -44,18 +26,20 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Add closing line: 'For more information contact 9315576318'",
+      "summary": "Add a dark theme mode for users",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-2",
-      "summary": "Make the website longer by adding more content/sections",
-      "reqIds": [],
+      "summary": "Ensure the app provides a user-facing Light/Dark theme mode toggle in the site header that switches the entire UI between light and dark styling.",
+      "reqIds": [
+        "REQ-1"
+      ],
       "status": "pending"
     }
   ],
-  "projectName": "Add contact line in footer and extend page with additional content sections",
+  "projectName": "Add and validate user-facing dark theme mode",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

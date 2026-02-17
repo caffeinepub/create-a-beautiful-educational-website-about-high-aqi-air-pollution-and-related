@@ -1,4 +1,4 @@
-import { Wind } from 'lucide-react';
+import { Wind, Heart } from 'lucide-react';
 
 export function SiteFooter() {
   const currentYear = new Date().getFullYear();
@@ -11,8 +11,17 @@ export function SiteFooter() {
     }
   };
 
+  // Get app identifier for UTM tracking
+  const getAppIdentifier = () => {
+    try {
+      return encodeURIComponent(window.location.hostname || 'airhealth-app');
+    } catch {
+      return 'airhealth-app';
+    }
+  };
+
   return (
-    <footer className="border-t bg-muted/30">
+    <footer className="border-t border-border bg-muted/30">
       <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
@@ -48,6 +57,15 @@ export function SiteFooter() {
               </li>
               <li>
                 <a 
+                  href="#aqi-forecast" 
+                  onClick={(e) => handleQuickLinkClick(e, '#aqi-forecast')}
+                  className="hover:text-primary transition-colors"
+                >
+                  AQI & Forecast
+                </a>
+              </li>
+              <li>
+                <a 
                   href="#diseases" 
                   onClick={(e) => handleQuickLinkClick(e, '#diseases')}
                   className="hover:text-primary transition-colors"
@@ -71,6 +89,15 @@ export function SiteFooter() {
                   className="hover:text-primary transition-colors"
                 >
                   Projects
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#reviews" 
+                  onClick={(e) => handleQuickLinkClick(e, '#reviews')}
+                  className="hover:text-primary transition-colors"
+                >
+                  Reviews
                 </a>
               </li>
               <li>
@@ -111,9 +138,20 @@ export function SiteFooter() {
           </div>
         </div>
         
-        <div className="pt-8 border-t text-center text-sm text-muted-foreground space-y-2">
+        <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground space-y-2">
           <p>© {currentYear} AirHealth.</p>
           <p>For more information contact 9315576318</p>
+          <p className="flex items-center justify-center gap-1.5">
+            Built with <Heart className="h-3.5 w-3.5 text-destructive fill-destructive" /> using{' '}
+            <a
+              href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${getAppIdentifier()}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors underline"
+            >
+              caffeine.ai
+            </a>
+          </p>
         </div>
       </div>
     </footer>

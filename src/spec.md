@@ -1,12 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Extend the site with additional AQI/air-health educational sections and update navigation/footer so users can reach them, plus add a contact line at the very bottom of the footer.
+**Goal:** Add a user-facing Light/Dark theme toggle, persist the user’s choice, and ensure the UI remains readable and consistent across both themes.
 
 **Planned changes:**
-- Add a new final footer-bottom line after the existing copyright that reads exactly: "For more information contact 9315576318".
-- Create at least two new full-width content section components under `frontend/src/components/sections/` with substantial English content relevant to AirHealth/AQI, and render them in `frontend/src/App.tsx` after the current last section (`RequestChangeSection`).
-- Update header navigation (desktop and mobile) and footer “Quick Links” to include smooth-scroll links to each new section id.
-- Extend the “Request a Change” form’s “Related Section” dropdown to include the newly added section names.
+- Add a Light/Dark theme toggle control in the site header for both desktop and mobile layouts, with accessible labels reflecting the action (switch to dark/light).
+- Persist the selected theme in localStorage and apply it as early as possible to avoid a flash of incorrect theme on initial load; default to system preference when no prior selection exists.
+- Audit and update key section/component styles to use theme tokens (background/foreground/muted/card/border) instead of hard-coded colors so layouts, cards, gradients, and embedded containers render correctly in both themes.
 
-**User-visible outcome:** The page is longer with new informative sections users can navigate to from the header/footer, the change-request form can reference the new sections, and the footer ends with the provided contact sentence.
+**User-visible outcome:** Users can switch between light and dark mode from the header, and their chosen theme remains in effect after refresh with consistent, readable styling across the app.

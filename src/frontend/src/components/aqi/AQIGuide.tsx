@@ -12,7 +12,7 @@ export function AQIGuide() {
 
   return (
     <div className="space-y-6">
-      <Alert>
+      <Alert className="border-border">
         <Info className="h-4 w-4" />
         <AlertDescription>
           This guide is for educational purposes only. Always follow local air quality advisories and consult healthcare professionals for personalized medical advice.
@@ -20,7 +20,7 @@ export function AQIGuide() {
       </Alert>
 
       <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 h-auto gap-2 bg-transparent">
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 h-auto gap-2 bg-muted/50">
           {aqiCategories.map((cat) => (
             <TabsTrigger
               key={cat.id}
@@ -38,7 +38,7 @@ export function AQIGuide() {
 
         {aqiCategories.map((cat) => (
           <TabsContent key={cat.id} value={cat.id} className="mt-6">
-            <Card>
+            <Card className="border-border">
               <CardHeader>
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div>

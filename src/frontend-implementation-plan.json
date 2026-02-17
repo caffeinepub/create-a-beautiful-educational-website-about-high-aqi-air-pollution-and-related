@@ -1,84 +1,104 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Footer contact line + additional AQI educational sections and navigation wiring",
+  "title": "User-facing light/dark theme toggle with persistence and full UI audit",
   "requirements": [
     {
-      "id": "REQ-3",
-      "summary": "Add an exact contact sentence as the last line in the footer bottom area.",
+      "id": "REQ-1",
+      "summary": "Provide a header Light/Dark theme toggle that updates the full UI instantly and remains accessible on desktop and mobile.",
       "acceptanceCriteria": [
-        "The footer displays the new sentence exactly as provided, including the phone number.",
-        "The new line appears after the existing copyright line (i.e., it is the last line on the page).",
-        "No existing footer content (branding, quick links, notices) is removed."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/layout/SiteFooter.tsx",
-          "operation": "modify",
-          "description": "Add a new final footer-bottom line that reads exactly: \"For more information contact 9315576318\" and ensure it renders after the existing copyright line without removing any existing footer content."
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Create at least two new full-width educational sections and render them after RequestChangeSection in App.tsx.",
-      "acceptanceCriteria": [
-        "At least two new full-width sections are added as separate components under frontend/src/components/sections/ and rendered in App.tsx after the current last section (RequestChangeSection).",
-        "Each new section has a unique section id (for hash navigation) and uses consistent spacing/layout patterns (e.g., py-16/md:py-24 and scroll-mt-16) matching existing sections.",
-        "The new sections contain substantial English content relevant to the AirHealth/AQI educational topic (not placeholder text)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/sections/LongTermHealthSection.tsx",
-          "operation": "create",
-          "description": "Create a new full-width React section component with a unique id (e.g., \"long-term-health\") using the same spacing/layout conventions as existing sections (py-16 md:py-24, scroll-mt-16). Include substantial English content about long-term health impacts of air pollution and practical takeaways. Use shadcn-ui building blocks already present in the app (e.g., Card) to match the visual system; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/sections/IndoorAirActionPlanSection.tsx",
-          "operation": "create",
-          "description": "Create a new full-width React section component with a unique id (e.g., \"indoor-air-action-plan\") using consistent spacing/layout conventions (py-16 md:py-24, scroll-mt-16). Include substantial English content focused on an indoor air quality action plan (ventilation, filtration, cooking, smoke events, monitoring). Use existing shadcn-ui components (e.g., Card, Alert) as appropriate; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Import the two new section components and render them in the page flow after the current last section (RequestChangeSection), preserving the existing order of current sections."
-        }
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "summary": "Add header and footer navigation links for the newly added sections with existing smooth-scroll behavior.",
-      "acceptanceCriteria": [
-        "SiteHeader navigation includes new buttons that scroll smoothly to each new section.",
-        "SiteFooter “Quick Links” includes new links that scroll smoothly to each new section.",
-        "All new links work from both desktop and mobile navigation without page reloads."
+        "A theme toggle control is visible in the header on both desktop and mobile layouts.",
+        "Clicking the toggle switches between light and dark modes without requiring a page reload.",
+        "The toggle has an accessible label indicating the action (e.g., “Switch to dark mode” / “Switch to light mode”)."
       ],
       "file_operations": [
         {
           "path": "frontend/src/components/layout/SiteHeader.tsx",
           "operation": "modify",
-          "description": "Extend the navItems list to include the two new sections (labels + hash hrefs matching the new section ids) so both desktop and mobile navigation smooth-scroll to them using the existing handleNavClick behavior."
+          "description": "Confirm the ThemeToggle is rendered in both the desktop nav and the mobile header controls and that it remains discoverable in responsive layouts; ensure the header container styling uses theme tokens (e.g., bg-background/text-foreground) so it correctly follows the active theme. Verify the component's usage instructions before implementing. (shadcn-ui: continue using its Button/Sheet primitives for consistent theming and accessibility.)"
         },
         {
-          "path": "frontend/src/components/layout/SiteFooter.tsx",
+          "path": "frontend/src/components/layout/ThemeToggle.tsx",
           "operation": "modify",
-          "description": "Add new entries to the “Quick Links” list for the new sections, using the existing handleQuickLinkClick smooth-scroll behavior and matching the new section ids."
+          "description": "Ensure the toggle control exposes an action-oriented accessible name that changes with state (keep aria-label aligned to the next action) and that the icon swap remains readable in both themes; keep using shadcn-ui Button for focus/keyboard behavior consistency. Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
-      "id": "REQ-6",
-      "summary": "Add the newly created section names to the “Related Section” dropdown in the Request a Change form.",
+      "id": "REQ-2",
+      "summary": "Persist the chosen theme in localStorage, default to system preference when unset, and apply the theme before first paint to avoid flashing.",
       "acceptanceCriteria": [
-        "The “Related Section” Select includes entries for each newly added section.",
-        "Submitting a change request still includes the selected section in the request body as it does today.",
-        "No regression to authentication/login flow for submitting change requests."
+        "After selecting dark mode, refreshing the page keeps the site in dark mode.",
+        "After selecting light mode, refreshing the page keeps the site in light mode.",
+        "When no theme has been previously selected, the initial theme defaults to the user’s system preference (prefers-color-scheme).",
+        "No visible “flash” from light to dark (or dark to light) occurs during initial page load."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/sections/RequestChangeSection.tsx",
+          "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Update the local sections array used by the “Related Section” Select to include the new section names (matching the new sections added to the page). Keep the existing submission behavior that prepends the selected section into the request content and do not change the authentication/login gating flow. Uses existing shadcn-ui Select components already in this file; verify the component's usage instructions before implementing."
+          "description": "Harden the existing pre-React theme bootstrap so it deterministically applies/removes the 'dark' class based on localStorage('theme') and (when absent) prefers-color-scheme; ensure it runs as early as possible and matches the same storage key/value contract used by the React theme hook to prevent mismatches. (No third-party theming libs.)"
+        },
+        {
+          "path": "frontend/src/hooks/useTheme.ts",
+          "operation": "modify",
+          "description": "Update theme state management to (1) safely read localStorage and system preference, (2) apply the 'dark' class with the least delay (prefer useLayoutEffect for DOM class changes to reduce flicker), and (3) keep localStorage in sync whenever the user toggles; validate stored values and fall back to system preference when unset/invalid."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Audit and update major UI surfaces to ensure consistent, readable styling in both themes using theme tokens instead of hard-coded colors.",
+      "acceptanceCriteria": [
+        "Primary layouts (header, footer, main sections, cards) display appropriate background, border, and text contrast in both themes.",
+        "Gradients and muted surfaces remain visually coherent in dark mode (no washed-out or illegible areas).",
+        "Embedded content containers (e.g., video cards) remain visually consistent with the surrounding theme (card/muted styling looks correct in dark mode)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/sections/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Adjust hero gradient/surface classes to ensure the gradient remains coherent in dark mode (avoid overly faint 'from-* / to-*' combinations); rely on theme tokens (background/muted/primary) rather than hard-coded colors so the section stays readable in both themes."
+        },
+        {
+          "path": "frontend/src/components/sections/VideosSection.tsx",
+          "operation": "modify",
+          "description": "Ensure video cards and the 'video unavailable' fallback use token-based surfaces (card/muted/background) and borders so embedded containers maintain contrast and look consistent in dark mode; avoid hard-coded color fills."
+        },
+        {
+          "path": "frontend/src/components/sections/ProjectsSection.tsx",
+          "operation": "modify",
+          "description": "Update project cards (category pill, impact callout, image placeholder surface) to rely on theme tokens (card/muted/accent/border/foreground) and ensure contrast is acceptable in dark mode; avoid washed-out accent overlays by tuning token-based alpha usage."
+        },
+        {
+          "path": "frontend/src/components/sections/AQIForecastSection.tsx",
+          "operation": "modify",
+          "description": "Audit dialogs, scroll areas, and inline 'bg-muted/*' surfaces for dark-mode legibility; ensure informational/warning alerts remain readable in both themes using token-based backgrounds/foregrounds (and dark: variants where needed) without introducing hard-coded palette colors."
+        },
+        {
+          "path": "frontend/src/components/sections/SymptomsHelpSection.tsx",
+          "operation": "modify",
+          "description": "Review alert and card styling so destructive/warning surfaces remain readable in dark mode; prefer token-based classes (destructive/warning/muted/foreground) and avoid any fixed light-only background assumptions."
+        },
+        {
+          "path": "frontend/src/components/aqi/AQIGuide.tsx",
+          "operation": "modify",
+          "description": "Reduce reliance on hard-coded inline color usage where possible (e.g., ensure tabs/cards use bg-card/text-foreground/muted tokens); where category colors must remain (AQI category swatches/badges), ensure surrounding surfaces and text remain token-driven and accessible in both themes."
+        },
+        {
+          "path": "frontend/src/components/layout/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "Ensure footer background/border/text uses theme tokens and that muted link styling remains readable in dark mode (hover/focus states included) without hard-coded colors."
+        },
+        {
+          "path": "frontend/src/components/layout/TopRightCreditLabel.tsx",
+          "operation": "modify",
+          "description": "Tune the credit label's backdrop and text styling to maintain contrast across both themes using token-based background/foreground classes; ensure backdrop blur + alpha remains legible on dark surfaces."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "If any contrast issues are found during the audit, adjust the existing CSS variable tokens for light/dark (e.g., --muted, --muted-foreground, --border) to improve readability while keeping the design system consistent; do not introduce a new theming library."
         }
       ]
     }

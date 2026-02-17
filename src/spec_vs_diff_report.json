@@ -1,19 +1,69 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T04:48:41.873Z",
-  "summary": "All specified frontend requirements (REQ-3 through REQ-6) appear to be implemented: two new content sections were added and rendered after RequestChangeSection, navigation (header + footer quick links) was extended with smooth-scroll to the new section IDs, the Request a Change dropdown includes the new sections, and the footer is described as having the exact new final contact line.",
-  "missing_requirements": [],
-  "hallucinated_features": [],
-  "confidence": 0.74,
+  "generatedAt": "2026-02-16T08:37:59.465Z",
+  "summary": "Theme infrastructure (CSS variables for light/dark, a `useTheme` hook with localStorage + prefers-color-scheme fallback, and multiple component class updates using theme tokens) appears to have been added. However, the diff evidence for the actual header toggle (including accessibility labeling) and the “apply as early as possible” no-flash bootstrap is indirect/truncated. Several non-requested content/features also appear to have been added/modified alongside the theming work.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Provide a user-facing Light/Dark theme mode toggle in the site header with an accessible label, visible on both desktop and mobile.",
+      "reason": "The provided diff content does not include `SiteHeader.tsx` or the ThemeToggle component implementation, so visibility in header (desktop/mobile) and presence of an accessible label cannot be verified from the code shown.",
+      "evidence": [
+        "frontend-file-summaries.txt (mentions SiteHeader includes ThemeToggle, but implementation not shown in diff content)"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Apply the theme as early as possible to avoid a flash of incorrect theme on first paint (no visible flash on initial load).",
+      "reason": "Although `useTheme` uses `useLayoutEffect` to reduce flicker, the requirement calls for applying the theme before first paint. The diff content does not show the claimed HTML bootstrap script; it is only referenced indirectly via a summary file, so this cannot be confirmed from code evidence.",
+      "evidence": [
+        "frontend/src/hooks/useTheme.ts (uses useLayoutEffect, but still runs after initial HTML load)",
+        "frontend-file-summaries.txt (claims a theme bootstrap script exists in frontend/index.html, but file content is not included in diff excerpt)"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Added/modified footer behavior including smooth-scroll quick links and UTM tracking app identifier logic.",
+      "reason": "The BuildRequest is limited to adding a light/dark theme toggle, persistence, and dark-mode styling audit; it does not request analytics/UTM tracking or expanded footer navigation behaviors.",
+      "evidence": [
+        "frontend/src/components/layout/SiteFooter.tsx"
+      ]
+    },
+    {
+      "description": "Added/modified a fixed on-screen credit label component ('Made by Saharsh UNIYAL') with blur/backdrop styling.",
+      "reason": "Not requested by the BuildRequest (theme toggle/persistence/styling audit only).",
+      "evidence": [
+        "frontend/src/components/layout/TopRightCreditLabel.tsx"
+      ]
+    },
+    {
+      "description": "Video section implementation with YouTube embeds and deduplication logic.",
+      "reason": "Not requested by the BuildRequest; unrelated to theme toggle/persistence requirements.",
+      "evidence": [
+        "frontend/src/components/sections/VideosSection.tsx"
+      ]
+    },
+    {
+      "description": "Projects section content and filtering UI for 'Pollution Reduction Projects'.",
+      "reason": "Not requested by the BuildRequest; unrelated to theme toggle/persistence requirements.",
+      "evidence": [
+        "frontend/src/components/sections/ProjectsSection.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.62,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/App.tsx",
+    "frontend/src/components/aqi/AQIGuide.tsx",
     "frontend/src/components/layout/SiteFooter.tsx",
-    "frontend/src/components/layout/SiteHeader.tsx",
-    "frontend/src/components/sections/IndoorAirActionPlanSection.tsx",
-    "frontend/src/components/sections/LongTermHealthSection.tsx",
-    "frontend/src/components/sections/RequestChangeSection.tsx",
+    "frontend/src/components/layout/TopRightCreditLabel.tsx",
+    "frontend/src/components/sections/HeroSection.tsx",
+    "frontend/src/components/sections/ProjectsSection.tsx",
+    "frontend/src/components/sections/SymptomsHelpSection.tsx",
+    "frontend/src/components/sections/VideosSection.tsx",
+    "frontend/src/hooks/useTheme.ts",
+    "frontend/src/index.css",
     "project_state.json"
   ]
 }

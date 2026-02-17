@@ -14,10 +14,10 @@ export function SymptomsHelpSection() {
         </div>
 
         <div className="max-w-4xl mx-auto space-y-6">
-          <Alert className="border-destructive bg-destructive/10">
+          <Alert className="border-destructive bg-destructive/10 dark:bg-destructive/20">
             <Phone className="h-5 w-5 text-destructive" />
             <AlertTitle className="text-destructive text-lg">Emergency Warning Signs</AlertTitle>
-            <AlertDescription className="text-base">
+            <AlertDescription className="text-base text-foreground">
               <p className="mb-3 font-semibold">Call emergency services immediately if you experience:</p>
               <ul className="space-y-2">
                 <li className="flex gap-2">
@@ -45,7 +45,7 @@ export function SymptomsHelpSection() {
           </Alert>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <Card>
+            <Card className="border-border">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertTriangle className="h-5 w-5 text-warning" />
@@ -81,7 +81,7 @@ export function SymptomsHelpSection() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="border-border">
               <CardHeader>
                 <CardTitle>When to Contact Your Doctor</CardTitle>
               </CardHeader>
@@ -115,7 +115,7 @@ export function SymptomsHelpSection() {
             </Card>
           </div>
 
-          <Alert>
+          <Alert className="border-border">
             <AlertDescription className="text-center">
               <strong>Remember:</strong> This website provides educational information only. Always seek professional medical advice for diagnosis and treatment. Your healthcare provider can offer personalized guidance based on your specific health conditions and circumstances.
             </AlertDescription>

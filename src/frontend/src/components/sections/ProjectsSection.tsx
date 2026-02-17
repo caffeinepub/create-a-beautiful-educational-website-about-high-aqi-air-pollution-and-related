@@ -101,8 +101,8 @@ export function ProjectsSection() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredProjects.map((project) => (
-            <Card key={project.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="aspect-video w-full overflow-hidden bg-muted">
+            <Card key={project.id} className="overflow-hidden hover:shadow-lg transition-shadow border-border">
+              <div className="aspect-video w-full overflow-hidden bg-muted border-b border-border">
                 <img 
                   src={project.image} 
                   alt={project.imageAlt}
@@ -112,7 +112,7 @@ export function ProjectsSection() {
               <CardHeader>
                 <div className="flex items-start justify-between gap-4">
                   <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary whitespace-nowrap">
+                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-primary/20 text-primary whitespace-nowrap border border-primary/30">
                     {project.category === 'bike' ? 'Bike' : 'Car'}
                   </span>
                 </div>
@@ -121,7 +121,7 @@ export function ProjectsSection() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="bg-accent/50 rounded-lg p-4 border border-accent">
+                <div className="bg-accent/20 rounded-lg p-4 border border-accent/40">
                   <p className="text-sm font-medium text-foreground">
                     <span className="text-primary font-semibold">Impact:</span> {project.impact}
                   </p>

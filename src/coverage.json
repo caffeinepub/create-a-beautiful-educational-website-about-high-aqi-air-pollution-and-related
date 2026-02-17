@@ -1,63 +1,61 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T04:48:41.876Z",
+  "generatedAt": "2026-02-16T08:37:59.468Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 4,
-    "implemented": 4,
+    "total": 3,
+    "implemented": 2,
     "items": [
       {
+        "id": "REQ-1",
+        "summary": "Ensure the app provides a user-facing Light/Dark theme mode toggle in the site header that switches the entire UI between light and dark styling.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/components/layout/SiteHeader.tsx",
+          "frontend/src/components/layout/ThemeToggle.tsx"
+        ],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Persist the user’s selected theme across reloads using localStorage, and apply the theme as early as possible to avoid a flash of incorrect theme on first paint.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/index.html",
+          "frontend/src/hooks/useTheme.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useTheme.ts"
+        ]
+      },
+      {
         "id": "REQ-3",
-        "summary": "Add a final line at the very end of the site (in the footer bottom area) that reads exactly: \"For more information contact 9315576318\".",
+        "summary": "Audit and update section/component styling so that all major surfaces and text remain readable and visually consistent in both light and dark modes, relying on theme tokens (e.g., bg-background, text-foreground, muted, card) rather than hard-coded colors.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/layout/SiteFooter.tsx"
+          "frontend/src/components/sections/HeroSection.tsx",
+          "frontend/src/components/sections/VideosSection.tsx",
+          "frontend/src/components/sections/ProjectsSection.tsx",
+          "frontend/src/components/sections/AQIForecastSection.tsx",
+          "frontend/src/components/sections/SymptomsHelpSection.tsx",
+          "frontend/src/components/aqi/AQIGuide.tsx",
+          "frontend/src/components/layout/SiteFooter.tsx",
+          "frontend/src/components/layout/TopRightCreditLabel.tsx",
+          "frontend/src/index.css"
         ],
         "matchedFiles": [
-          "frontend/src/components/layout/SiteFooter.tsx"
-        ]
-      },
-      {
-        "id": "REQ-4",
-        "summary": "Make the website \"more long\" by adding additional, meaningful content sections below the existing sections, implemented as new React section components and included in the page flow in frontend/src/App.tsx.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/sections/LongTermHealthSection.tsx",
-          "frontend/src/components/sections/IndoorAirActionPlanSection.tsx",
-          "frontend/src/App.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/sections/LongTermHealthSection.tsx",
-          "frontend/src/components/sections/IndoorAirActionPlanSection.tsx",
-          "frontend/src/App.tsx"
-        ]
-      },
-      {
-        "id": "REQ-5",
-        "summary": "Update site navigation to include the newly added sections: add corresponding items to the header navigation (desktop + mobile) and the footer “Quick Links” list, using the same smooth-scroll behavior as existing links.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/layout/SiteHeader.tsx",
-          "frontend/src/components/layout/SiteFooter.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/layout/SiteHeader.tsx",
-          "frontend/src/components/layout/SiteFooter.tsx"
-        ]
-      },
-      {
-        "id": "REQ-6",
-        "summary": "Extend the “Request a Change” form’s “Related Section” dropdown to include the newly added section names so users can reference them when submitting change requests.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/sections/RequestChangeSection.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/sections/RequestChangeSection.tsx"
+          "frontend/src/components/sections/HeroSection.tsx",
+          "frontend/src/components/sections/VideosSection.tsx",
+          "frontend/src/components/sections/ProjectsSection.tsx",
+          "frontend/src/components/sections/SymptomsHelpSection.tsx",
+          "frontend/src/components/aqi/AQIGuide.tsx",
+          "frontend/src/components/layout/SiteFooter.tsx",
+          "frontend/src/components/layout/TopRightCreditLabel.tsx",
+          "frontend/src/index.css"
         ]
       }
     ]
@@ -67,12 +65,15 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/App.tsx",
+    "frontend/src/components/aqi/AQIGuide.tsx",
     "frontend/src/components/layout/SiteFooter.tsx",
-    "frontend/src/components/layout/SiteHeader.tsx",
-    "frontend/src/components/sections/IndoorAirActionPlanSection.tsx",
-    "frontend/src/components/sections/LongTermHealthSection.tsx",
-    "frontend/src/components/sections/RequestChangeSection.tsx",
+    "frontend/src/components/layout/TopRightCreditLabel.tsx",
+    "frontend/src/components/sections/HeroSection.tsx",
+    "frontend/src/components/sections/ProjectsSection.tsx",
+    "frontend/src/components/sections/SymptomsHelpSection.tsx",
+    "frontend/src/components/sections/VideosSection.tsx",
+    "frontend/src/hooks/useTheme.ts",
+    "frontend/src/index.css",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",
