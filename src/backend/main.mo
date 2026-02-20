@@ -7,7 +7,6 @@ import Iter "mo:core/Iter";
 import AccessControl "authorization/access-control";
 import MixinAuthorization "authorization/MixinAuthorization";
 
-
 actor {
   public type ChangeRequest = {
     content : Text;

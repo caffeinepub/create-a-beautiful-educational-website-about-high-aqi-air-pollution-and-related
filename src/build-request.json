@@ -1,74 +1,30 @@
 {
   "kind": "build_request",
-  "title": "Add and validate user-facing dark theme mode",
+  "title": "Add creator credit in bottom left corner",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Ensure the app provides a user-facing Light/Dark theme mode toggle in the site header that switches the entire UI between light and dark styling.",
+      "text": "Add a text label 'made by Saharsh UNIYAL' in the bottom left corner of the page that remains visible across all sections",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-9"
         ],
         "quotes": [
-          "Offer a dark theme mode for user"
+          "In last left corner write made by Saharsh UNIYAL"
         ]
       },
       "acceptanceCriteria": [
-        "A theme toggle control is visible in the header on both desktop and mobile layouts.",
-        "Clicking the toggle switches between light and dark modes without requiring a page reload.",
-        "The toggle has an accessible label indicating the action (e.g., “Switch to dark mode” / “Switch to light mode”)."
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "Persist the user’s selected theme across reloads using localStorage, and apply the theme as early as possible to avoid a flash of incorrect theme on first paint.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4",
-          "msg-7"
-        ],
-        "quotes": [
-          "Offer a dark theme mode for user",
-          "Yea"
-        ]
-      },
-      "acceptanceCriteria": [
-        "After selecting dark mode, refreshing the page keeps the site in dark mode.",
-        "After selecting light mode, refreshing the page keeps the site in light mode.",
-        "When no theme has been previously selected, the initial theme defaults to the user’s system preference (prefers-color-scheme).",
-        "No visible “flash” from light to dark (or dark to light) occurs during initial page load."
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Audit and update section/component styling so that all major surfaces and text remain readable and visually consistent in both light and dark modes, relying on theme tokens (e.g., bg-background, text-foreground, muted, card) rather than hard-coded colors.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ],
-        "quotes": [
-          "Offer a dark theme mode for user"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Primary layouts (header, footer, main sections, cards) display appropriate background, border, and text contrast in both themes.",
-        "Gradients and muted surfaces remain visually coherent in dark mode (no washed-out or illegible areas).",
-        "Embedded content containers (e.g., video cards) remain visually consistent with the surrounding theme (card/muted styling looks correct in dark mode)."
+        "Text 'made by Saharsh UNIYAL' appears in the bottom left corner",
+        "Label is visible on all pages and sections",
+        "Text has appropriate styling that ensures readability in both light and dark themes",
+        "Label is positioned with fixed or sticky positioning to remain in the bottom left corner"
       ]
     }
   ],
-  "constraints": [
-    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
-    "Backend is single-actor (backend/main.mo); no backend changes are required for theme support."
-  ],
-  "nonGoals": [
-    "Adding user accounts/preferences stored on the backend for theme selection.",
-    "Introducing third-party theming libraries or changing the app’s authentication model."
-  ],
+  "constraints": [],
+  "nonGoals": [],
   "imageRequirements": {
     "required": [],
     "edits": []

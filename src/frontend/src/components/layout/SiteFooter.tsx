@@ -1,4 +1,4 @@
-import { Wind, Heart } from 'lucide-react';
+import { Wind } from 'lucide-react';
 
 export function SiteFooter() {
   const currentYear = new Date().getFullYear();
@@ -8,15 +8,6 @@ export function SiteFooter() {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  // Get app identifier for UTM tracking
-  const getAppIdentifier = () => {
-    try {
-      return encodeURIComponent(window.location.hostname || 'airhealth-app');
-    } catch {
-      return 'airhealth-app';
     }
   };
 
@@ -141,17 +132,11 @@ export function SiteFooter() {
         <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground space-y-2">
           <p>© {currentYear} AirHealth.</p>
           <p>For more information contact 9315576318</p>
-          <p className="flex items-center justify-center gap-1.5">
-            Built with <Heart className="h-3.5 w-3.5 text-destructive fill-destructive" /> using{' '}
-            <a
-              href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${getAppIdentifier()}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors underline"
-            >
-              caffeine.ai
-            </a>
-          </p>
+          <div className="mt-4 pt-4 border-t border-border">
+            <p>Name: Saharsh UNIYAL</p>
+            <p>Class: 8th B</p>
+            <p>School: PG DAV SN SEC SCHOOL</p>
+          </div>
         </div>
       </div>
     </footer>

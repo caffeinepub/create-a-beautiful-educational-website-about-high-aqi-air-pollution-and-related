@@ -7,18 +7,10 @@
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-persist-the-user-s-selected-theme-across-reloads-using-localstorage-and-apply-the-theme-as-early-as-possible-to-avoid-a-flash-of-incorrect-theme-on-first-paint",
-      "title": "Persist the user’s selected theme across reloads using localStorage, and apply the theme as early as possible to avoid a flash of incorrect theme on first paint.",
+      "id": "feature-add-a-text-label-made-by-saharsh-uniyal-in-the-bottom-left-corner-of-the-page-that-remains-visible-across-all-sections",
+      "title": "Add a text label 'made by Saharsh UNIYAL' in the bottom left corner of the page that remains visible across all sections",
       "reqIds": [
-        "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-audit-and-update-section-component-styling-so-that-all-major-surfaces-and-text-remain-readable-and-visually-consistent-in-both-light-and-dark-modes-relying-on-theme-tokens-e-g-bg-background-text-foreground-muted-card-rather-than-hard-coded-colors",
-      "title": "Audit and update section/component styling so that all major surfaces and text remain readable and visually consistent in both light and dark modes, relying on theme tokens (e.g., bg-background, text-foreground, muted, card) rather than hard-coded colors.",
-      "reqIds": [
-        "REQ-3"
+        "REQ-1"
       ],
       "version": 1
     }
@@ -26,20 +18,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Add a dark theme mode for users",
+      "summary": "Add 'made by Saharsh UNIYAL' text in bottom left corner",
       "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Ensure the app provides a user-facing Light/Dark theme mode toggle in the site header that switches the entire UI between light and dark styling.",
-      "reqIds": [
-        "REQ-1"
-      ],
       "status": "pending"
     }
   ],
-  "projectName": "Add and validate user-facing dark theme mode",
+  "projectName": "Add creator credit in bottom left corner",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

@@ -1,79 +1,38 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-16T08:37:59.468Z",
+  "generatedAt": "2026-02-20T09:14:36.704Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 3,
-    "implemented": 2,
+    "total": 1,
+    "implemented": 1,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Ensure the app provides a user-facing Light/Dark theme mode toggle in the site header that switches the entire UI between light and dark styling.",
-        "status": "missing",
-        "plannedFiles": [
-          "frontend/src/components/layout/SiteHeader.tsx",
-          "frontend/src/components/layout/ThemeToggle.tsx"
-        ],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-2",
-        "summary": "Persist the user’s selected theme across reloads using localStorage, and apply the theme as early as possible to avoid a flash of incorrect theme on first paint.",
+        "summary": "Add a text label 'made by Saharsh UNIYAL' in the bottom left corner of the page that remains visible across all sections",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/index.html",
-          "frontend/src/hooks/useTheme.ts"
+          "frontend/src/components/layout/CreatorCredit.tsx",
+          "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/hooks/useTheme.ts"
-        ]
-      },
-      {
-        "id": "REQ-3",
-        "summary": "Audit and update section/component styling so that all major surfaces and text remain readable and visually consistent in both light and dark modes, relying on theme tokens (e.g., bg-background, text-foreground, muted, card) rather than hard-coded colors.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/sections/HeroSection.tsx",
-          "frontend/src/components/sections/VideosSection.tsx",
-          "frontend/src/components/sections/ProjectsSection.tsx",
-          "frontend/src/components/sections/AQIForecastSection.tsx",
-          "frontend/src/components/sections/SymptomsHelpSection.tsx",
-          "frontend/src/components/aqi/AQIGuide.tsx",
-          "frontend/src/components/layout/SiteFooter.tsx",
-          "frontend/src/components/layout/TopRightCreditLabel.tsx",
-          "frontend/src/index.css"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/sections/HeroSection.tsx",
-          "frontend/src/components/sections/VideosSection.tsx",
-          "frontend/src/components/sections/ProjectsSection.tsx",
-          "frontend/src/components/sections/SymptomsHelpSection.tsx",
-          "frontend/src/components/aqi/AQIGuide.tsx",
-          "frontend/src/components/layout/SiteFooter.tsx",
-          "frontend/src/components/layout/TopRightCreditLabel.tsx",
-          "frontend/src/index.css"
+          "frontend/src/components/layout/CreatorCredit.tsx",
+          "frontend/src/App.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
     "build-request.json",
+    "caffeine.lock.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/aqi/AQIGuide.tsx",
-    "frontend/src/components/layout/SiteFooter.tsx",
-    "frontend/src/components/layout/TopRightCreditLabel.tsx",
-    "frontend/src/components/sections/HeroSection.tsx",
-    "frontend/src/components/sections/ProjectsSection.tsx",
-    "frontend/src/components/sections/SymptomsHelpSection.tsx",
-    "frontend/src/components/sections/VideosSection.tsx",
-    "frontend/src/hooks/useTheme.ts",
-    "frontend/src/index.css",
+    "frontend/src/App.tsx",
+    "frontend/src/components/layout/CreatorCredit.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

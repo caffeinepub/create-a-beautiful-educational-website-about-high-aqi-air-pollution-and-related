@@ -1,9 +1,9 @@
 {
   "frontend/src/index.css": "Global styles with custom OKLCH color system using deep forest green primary and warm amber accents, with improved muted-foreground contrast for dark mode readability.",
   "frontend/tailwind.config.js": "Tailwind configuration extending the theme with custom fonts, colors mapped to CSS variables, enhanced shadows, and custom animations for a cohesive design system.",
-  "frontend/src/App.tsx": "Main application component that composes the site header, footer, top-right credit label, and all content sections including the new VideosSection positioned after HeroSection in a single-page layout.",
+  "frontend/src/App.tsx": "Main application component that conditionally renders either the robot verification gate or the full site content (header, all sections, footer) based on verification state, with loading state handling, session persistence, and the CreatorCredit component visible across all states.",
   "frontend/src/components/layout/SiteHeader.tsx": "Sticky header with site branding, responsive navigation supporting desktop inline menu and mobile sheet drawer with smooth scroll to anchored sections, now including Reviews link and ThemeToggle in both desktop and mobile views.",
-  "frontend/src/components/layout/SiteFooter.tsx": "Footer component with site info, quick links, medical disclaimer, copyright line, contact phone number, and caffeine.ai attribution with UTM tracking and heart icon.",
+  "frontend/src/components/layout/SiteFooter.tsx": "Footer component with site info, quick links, medical disclaimer, copyright line, contact phone number, and student details block (name, class, school) displayed at the bottom with consistent typography and colors for both light and dark modes.",
   "frontend/src/components/sections/HeroSection.tsx": "Hero section featuring headline, description, CTA buttons, and the generated hero image with improved gradient and border styling for better dark mode compatibility.",
   "frontend/src/components/sections/WhatIsAQISection.tsx": "Educational section explaining what AQI measures, why it matters, and common pollution sources using icon cards.",
   "frontend/src/content/aqiCategories.ts": "Static data defining six AQI categories (Good to Hazardous) with ranges, colors, descriptions, health risks, and recommended actions.",
@@ -15,7 +15,7 @@
   "frontend/src/components/sections/SymptomsHelpSection.tsx": "Section outlining emergency warning signs, mild-to-moderate symptoms, and when to contact a doctor with improved alert styling for dark mode readability.",
   "frontend/src/components/sections/PreventionTipsSection.tsx": "Section with six cards covering practical prevention tips for indoor air quality, outdoor precautions, masks, exercise, staying informed, and community action.",
   "frontend/src/components/sections/VulnerableGroupsSection.tsx": "Section highlighting six at-risk populations (children, older adults, people with conditions, pregnant women, outdoor workers, active individuals) with specific protective guidance for each, now with correct Activity icon import.",
-  "frontend/index.html": "HTML entry point with theme bootstrap script that reads localStorage and applies dark class before React renders to prevent flash of unstyled content.",
+  "frontend/index.html": "HTML entry point with theme bootstrap script, canonical link to https://saharshuniyal-airhealth.com, and Open Graph metadata for proper SEO and social sharing.",
   "frontend/src/hooks/useQueries.ts": "Placeholder file for future React Query hooks; currently empty as all content is static client-side data.",
   "frontend/src/hooks/useSubmitChangeRequest.ts": "React Query mutation hook that submits change requests to the backend using the existing useActor hook, with proper error handling and query invalidation.",
   "frontend/src/components/sections/RequestChangeSection.tsx": "Request a Change section component with a form for authenticated users to submit suggestions, including message (required), related section selector (now with AQI & Forecast option), and contact info (optional), with loading, success, and error states.",
@@ -30,5 +30,10 @@
   "frontend/src/components/layout/ThemeToggle.tsx": "Accessible theme toggle button component with animated sun/moon icons that switches between light and dark modes using the useTheme hook.",
   "frontend/src/components/reviews/StarRating.tsx": "Reusable star rating component that accepts rating and configurable max props, renders filled/empty star icons, and displays text in the pattern \"{rating} out of {max} stars\".",
   "frontend/src/components/sections/ReviewBoxSection.tsx": "Review box section component displaying a centered card with star rating (5 out of 5 stars) using shadcn Card components and consistent styling.",
-  "frontend/src/components/sections/VideosSection.tsx": "Section component displaying Hindi and English air pollution educational videos with improved card borders and muted backgrounds for consistent dark mode appearance."
+  "frontend/src/components/sections/VideosSection.tsx": "Section component displaying Hindi and English air pollution educational videos with improved card borders and muted backgrounds for consistent dark mode appearance.",
+  "frontend/src/hooks/useRobotVerification.ts": "Custom React hook that manages robot verification state with sessionStorage persistence, checking for existing verification on mount and providing a method to mark the user as verified.",
+  "frontend/src/components/robot-verification/RobotVerificationGate.tsx": "Simplified full-page blocking verification component with a single checkbox (\"I am human\") and confirm button, featuring clear error feedback, keyboard accessibility, and session-scoped persistence via the onVerified callback.",
+  "frontend/public/.well-known/ic-domains": "IC custom-domain association file listing saharshuniyal-airhealth.com for certificate issuance and domain validation on the Internet Computer.",
+  "frontend/public/CNAME": "CNAME file containing saharshuniyal-airhealth.com to support custom domain binding for static site hosting.",
+  "frontend/src/components/layout/CreatorCredit.tsx": "Fixed-position component displaying \"made by Saharsh UNIYAL\" in the bottom left corner with theme-aware styling, backdrop blur, and border for visibility in both light and dark modes."
 }
